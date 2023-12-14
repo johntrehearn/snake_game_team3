@@ -1,8 +1,8 @@
-const board_size = [1000, 1000];
+const board_size = [500, 500];
 
 const start_snake = [
     [3, 3],
-    [3, 4]  
+    [3, 4],  
     [3, 5]  
 ];
 
@@ -31,6 +31,6 @@ export {
     start_apple,
     square_size,
     snake_speed,
-    movement,
+    movement
 };
 
