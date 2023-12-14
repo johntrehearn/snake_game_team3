@@ -9,7 +9,7 @@ const start_snake = [
 const start_apple = [6, 2]
 
 
-const square_size = 50;
+const square_size = 30;
 
 const snake_speed = 400;
 
