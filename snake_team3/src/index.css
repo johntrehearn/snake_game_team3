@@ -12,3 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

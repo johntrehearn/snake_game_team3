@@ -1,8 +1,15 @@
-# React + Vite
+-Build on top of this tutorial:
+https://www.youtube.com/watch?v=OrpJdVP-hO4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+changes made:
 
-Currently, two official plugins are available:
+- if turn 180deg, do nothing, but don't die
+- pics for the apple and the snake head
+- buttons to choose difficulty, instead of one start button, changes snake_speed and square_size
+- css to look good
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+References:
+
+https://www.youtube.com/watch?v=OrpJdVP-hO4
+
+useInterval - Custom Hook by Dan Abramov
