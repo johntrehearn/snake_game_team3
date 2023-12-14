@@ -1,9 +1,9 @@
 const board_size = [500, 500];
 
 const start_snake = [
-    [3, 3],
-    [3, 4],  
-    [3, 5]  
+    [3, 15],
+    [3, 16],  
+    [3, 17]  
 ];
 
 const start_apple = [6, 2]
