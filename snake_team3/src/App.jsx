@@ -31,13 +31,9 @@ const App = () => {
   const createApple = () => apple.map((_, i) => Math.floor(Math.random() * (board_size[i] / square_size)));
 
   const snakeMove = ({keyCode}) => {
+    console.log(Object.keys(movement))
     const keys = Object.keys(movement)
-    /* keys.includes(keyCode) ? setDir(movement[keyCode]) : return ; */
-    if (keys.includes(keyCode)){
-      setDir(movement[keyCode])
-    } else {
-      return
-    }
+    keys.includes(keyCode) && setDir(movement[keyCode]);
   }
 
   console.log("direction", dir)
