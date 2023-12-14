@@ -18,6 +18,8 @@ const App = () => {
   const [dir, setDir] = useState([0, -1]);
   const [gameOver, setGameOver] = useState(false);
   const canvasRef = useRef();
+
+
   
   useInterval(() => gameLoop(), speed);
 
@@ -48,12 +50,25 @@ const App = () => {
 
   useEffect (() => {
     const context = canvasRef.current.getContext("2d");
+    const img = new Image();
+  img.onload = draw;
+  img.src = 'https://i.stack.imgur.com/CbEMh.png';
+  function draw() {
+    context.drawImage(img, apple[0], apple[1], 1, 1); 
+  }
     context.setTransform(square_size, 0, 0, square_size, 0, 0);
     context.clearRect(0, 0, board_size[0], board_size[0]);
+
+    
+ /*    const img = new Image();
+   /*  img.onload = draw; */
+    img.src = 'https://i.stack.imgur.com/CbEMh.png';
+    
+    context.drawImage(img, 0, 0);
     context.fillStyle = "blue";
     snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-    context.fillStyle = "green";
-    context.fillRect(apple[0], apple[1], 1, 1);
+    /* context.fillStyle = "green"; */
+    /* context.fillRect(apple[0], apple[1], 1, 1); */
   }, [snake, apple, gameOver]);
 
 
