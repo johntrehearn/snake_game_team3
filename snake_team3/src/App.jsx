@@ -88,8 +88,12 @@ const App = () => {
     const img = new Image();
     img.onload = draw;
     img.src = "https://i.stack.imgur.com/CbEMh.png";
+
+    const snakeHead = new Image();
+    snakeHead.src = "assets/snakeHead.PNG";
     function draw() {
       context.drawImage(img, apple[0], apple[1], 1, 1);
+      context.drawImage(snakeHead, snake[0][0], snake[0][1], 1, 1);
     }
     context.setTransform(squareSize, 0, 0, squareSize, 0, 0);
     context.clearRect(0, 0, board_size[0], board_size[0]);
