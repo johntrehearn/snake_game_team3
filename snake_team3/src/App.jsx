@@ -87,9 +87,10 @@ const App = () => {
     const context = canvasRef.current.getContext("2d");
     const img = new Image();
     img.onload = draw;
-    img.src = "https://i.stack.imgur.com/CbEMh.png";
+    img.src = "assets/apple.png";
 
     const snakeHead = new Image();
+    snakeHead.onload = draw;
     snakeHead.src = "assets/snakeHead.PNG";
     function draw() {
       context.drawImage(img, apple[0], apple[1], 1, 1);
@@ -97,7 +98,7 @@ const App = () => {
     }
     context.setTransform(squareSize, 0, 0, squareSize, 0, 0);
     context.clearRect(0, 0, board_size[0], board_size[0]);
-    img.src = "https://i.stack.imgur.com/CbEMh.png";
+    img.src = "assets/apple.png";
 
     context.drawImage(img, 0, 0);
     context.fillStyle = "blue";
