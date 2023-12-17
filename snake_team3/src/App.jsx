@@ -121,31 +121,60 @@ const App = () => {
 
   return (
     <div className="app" role="button" tabIndex="0" onKeyDown={snakeMove}>
+      <h1>Snake Game - Team 3</h1>
+      <div className='info_box'>
+
+      <div className='difButtons'>
+
+        {gameOver && <div>GAME OVER</div>}
       <button
         onClick={() => startGame(difficulty.easy.size, difficulty.easy.speed)}
-      >
+        >
         Easy
       </button>
       <button
         onClick={() =>
           startGame(difficulty.medium.size, difficulty.medium.speed)
         }
-      >
+        >
         Medium
       </button>
       <button
         onClick={() => startGame(difficulty.hard.size, difficulty.hard.speed)}
-      >
+        >
         Hard
       </button>
+      </div>
+      <div className='game_canvas'>
+
       <canvas
-        style={{ border: "5px solid green", background: "#E5E4E2"}}
+        style={{ border: "10px solid black", background: 'white' }}
+
+main
         width={`${board_size[0]}px`}
         height={`${board_size[1]}px`}
         ref={canvasRef}
-      />
-      {gameOver && <div>GAME OVER</div>}
+        />
+        </div>
+        </div>
+
+      <div className='footer'>
+
+          <h3>&copy; Team 3</h3>
+
+          <h2>Find us on github </h2><i className="bi bi-emoji-smile-fill"></i>
+          <a href='https://github.com/ThienPham15'>Thien</a>
+
+          <a href="https://github.com/aj-kivimaki">Atte</a>
+
+          <a href="https://github.com/johntrehearn">John</a>
+
+</div>
+
+
+
     </div>
+    
   );
 };
 
