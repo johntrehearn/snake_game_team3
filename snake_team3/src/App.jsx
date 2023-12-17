@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { useInterval } from "./useInterval";
-
 import {
   board_size,
   start_snake,
@@ -8,6 +7,7 @@ import {
   difficulty,
   movement,
 } from "./constants";
+import useSound from "use-sound"; //use-sound install by 'npm add use-sound'
 
 const App = () => {
   const [snake, setSnake] = useState(start_snake);
@@ -17,6 +17,8 @@ const App = () => {
   const [squareSize, setSquareSize] = useState(difficulty.medium.size);
   const [gameOver, setGameOver] = useState(false);
   const canvasRef = useRef();
+
+  const [playSound] = useSound("../assets/sound/swallow.mp3"); 
 
   useInterval(() => gameLoop(), speed);
 
@@ -73,6 +75,7 @@ const App = () => {
 
   const cheakAppleCollision = (newSnake) => {
     if (newSnake[0][0] === apple[0] && newSnake[0][1] === apple[1]) {
+      playSound();
       let newApple = createApple();
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
@@ -84,25 +87,36 @@ const App = () => {
   };
 
   useEffect(() => {
-    const context = canvasRef.current.getContext("2d");
-    const img = new Image();
-    img.onload = draw;
-    img.src = "assets/apple.png";
 
+    //add apple img
+    const appleImg = new Image();
+    appleImg.onload = draw;
+    appleImg.src = "assets/apple2.png";
+
+    //add snakeHead img
     const snakeHead = new Image();
     snakeHead.onload = draw;
-    snakeHead.src = "assets/snakeHead.PNG";
-    function draw() {
-      context.drawImage(img, apple[0], apple[1], 1, 1);
-      context.drawImage(snakeHead, snake[0][0], snake[0][1], 1, 1);
-    }
+    snakeHead.src = "assets/snakeHead2.PNG";
+
+    const context = canvasRef.current.getContext("2d");
     context.setTransform(squareSize, 0, 0, squareSize, 0, 0);
     context.clearRect(0, 0, board_size[0], board_size[0]);
-    img.src = "assets/apple.png";
 
-    context.drawImage(img, 0, 0);
-    context.fillStyle = "blue";
-    snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
+    context.fillStyle = "#74B72E" /* "#98BF64" */; 
+    snake.forEach(([x, y]) => 
+    {
+      context.beginPath();
+      context.arc(x+0.5,y+0.5,0.5,0,Math.PI*2,true);
+      context.closePath();
+      context.fill();
+    });    
+
+    function draw() {
+      context.drawImage(appleImg, apple[0], apple[1], 1, 1);
+      context.clearRect(snake[0][0],snake[0][1], 1, 1);
+      let a = context.drawImage(snakeHead, snake[0][0] , snake[0][1], 1, 1);
+    }
+
   }, [snake, apple, gameOver, squareSize]);
 
   return (
@@ -125,7 +139,7 @@ const App = () => {
         Hard
       </button>
       <canvas
-        style={{ border: "10px solid green" }}
+        style={{ border: "5px solid green", background: "#E5E4E2"}}
         width={`${board_size[0]}px`}
         height={`${board_size[1]}px`}
         ref={canvasRef}
